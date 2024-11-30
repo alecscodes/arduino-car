@@ -1,7 +1,9 @@
 #pragma once
-#include "sensors.h"
+#include "config.h"
+#include "interfaces/IMotor.h"
+#include "interfaces/ISensor.h"
 
-enum RobotState
+enum class RobotState
 {
     MOVING_FORWARD,
     AVOIDING_FRONT,
@@ -11,9 +13,12 @@ enum RobotState
 class Navigation
 {
 public:
-    static void navigate(const SensorData &sensors);
+    Navigation(IMotor &motor, const RobotConfig &config);
+    void navigate(const SensorData &sensors);
 
 private:
-    static void performAvoidanceManeuver(const SensorData &sensors);
-    static RobotState currentState;
+    void performAvoidanceManeuver(const SensorData &sensors);
+    IMotor &m_motor;
+    const RobotConfig &m_config;
+    RobotState m_currentState;
 };

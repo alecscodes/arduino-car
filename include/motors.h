@@ -1,14 +1,21 @@
 #pragma once
+#include <stdint.h>
+#include "interfaces/IMotor.h"
 
-class Motors
+class Motors : public IMotor
 {
 public:
-    static void init();
-    static void moveForward(int speed);
-    static void moveBackward(int speed);
-    static void turnLeft(int speed);
-    static void turnRight(int speed);
-    static void backLeft(int speed);
-    static void backRight(int speed);
-    static void stop();
+    Motors(uint8_t a1b, uint8_t a1a, uint8_t b1b, uint8_t b1a);
+    void init() override;
+    void moveForward(int speed) override;
+    void moveBackward(int speed) override;
+    void turnLeft(int speed) override;
+    void turnRight(int speed) override;
+    void stop() override;
+
+private:
+    const uint8_t m_a1b;
+    const uint8_t m_a1a;
+    const uint8_t m_b1b;
+    const uint8_t m_b1a;
 };

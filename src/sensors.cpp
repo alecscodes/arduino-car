@@ -1,31 +1,32 @@
-
 #include "sensors.h"
-#include "config.h"
 #include <Arduino.h>
+
+SensorSystem::SensorSystem(uint8_t echoPin, uint8_t trigPin, uint8_t leftIR, uint8_t rightIR)
+    : m_echoPin(echoPin), m_trigPin(trigPin), m_leftIR(leftIR), m_rightIR(rightIR) {}
 
 void SensorSystem::init()
 {
-    pinMode(ECHO_PIN, INPUT);
-    pinMode(TRIG_PIN, OUTPUT);
-    pinMode(LEFT_IR, INPUT);
-    pinMode(RIGHT_IR, INPUT);
+    pinMode(m_echoPin, INPUT);
+    pinMode(m_trigPin, OUTPUT);
+    pinMode(m_leftIR, INPUT);
+    pinMode(m_rightIR, INPUT);
 }
 
 float SensorSystem::readUltrasonic()
 {
-    digitalWrite(TRIG_PIN, LOW);
+    digitalWrite(m_trigPin, LOW);
     delayMicroseconds(2);
-    digitalWrite(TRIG_PIN, HIGH);
+    digitalWrite(m_trigPin, HIGH);
     delayMicroseconds(10);
-    digitalWrite(TRIG_PIN, LOW);
-    return pulseIn(ECHO_PIN, HIGH) / 58.00;
+    digitalWrite(m_trigPin, LOW);
+    return pulseIn(m_echoPin, HIGH) / 58.00;
 }
 
 SensorData SensorSystem::read()
 {
     SensorData data;
     data.frontDistance = readUltrasonic();
-    data.leftBlocked = !digitalRead(LEFT_IR);
-    data.rightBlocked = !digitalRead(RIGHT_IR);
+    data.leftBlocked = !digitalRead(m_leftIR);
+    data.rightBlocked = !digitalRead(m_rightIR);
     return data;
 }
