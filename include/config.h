@@ -11,6 +11,7 @@ struct PinConfig
     static constexpr uint8_t TRIG_PIN = 3;
     static constexpr uint8_t RIGHT_IR = 7;
     static constexpr uint8_t LEFT_IR = 8;
+    static constexpr uint8_t BUTTON = 2;
 };
 
 struct RobotConfig
