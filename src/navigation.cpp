@@ -51,16 +51,13 @@ void Navigation::performAvoidanceManeuver(const SensorData &sensors)
     if (sensors.leftBlocked && sensors.rightBlocked)
     {
         m_motor.moveBackward(m_config.NORMAL_SPEED);
-        delay(m_config.TURN_TIME);
     }
     else if (sensors.leftBlocked)
     {
         m_motor.turnLeft(m_config.TURN_SPEED);
-        delay(m_config.TURN_TIME);
     }
     else if (sensors.rightBlocked)
     {
         m_motor.turnRight(m_config.TURN_SPEED);
-        delay(m_config.TURN_TIME);
     }
 }
