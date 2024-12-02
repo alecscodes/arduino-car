@@ -11,13 +11,9 @@ void Navigation::navigate(const SensorData &sensors)
     switch (m_currentState)
     {
     case RobotState::MOVING_FORWARD:
-        const bool isOptimalDistance =
-            abs(sensors.frontDistance - m_config.SAFE_DISTANCE) <= 5;
-
-        if (isOptimalDistance)
+        if (abs(sensors.frontDistance - m_config.SAFE_DISTANCE) <= 5)
         {
             m_motor.moveForward(m_config.NORMAL_SPEED - 50);
-            break;
         }
 
         if (sensors.frontDistance < m_config.SAFE_DISTANCE)
