@@ -37,29 +37,9 @@ A simple autonomous car project built with Arduino that can navigate and avoid o
   - `interfaces/`: Abstract interfaces
   - `config.h`: Pin and robot configurations
   - `motors.h`: Motor control class
-  - `sensors.h`: Sensor system class
-  - `navigation.h`: Navigation class
 
-## Building and Uploading
+## Tutorial Reference
 
-This project uses PlatformIO for development. To build and upload:
+This project is based on the tutorial from SunFounder. For detailed assembly instructions and additional information, please visit:
 
-1. Install PlatformIO IDE extension in VSCode
-2. Open the project in VSCode
-3. Connect your Arduino Uno
-4. Click the "Upload" button or use `pio run -t upload`
-
-## Configuration
-
-You can adjust the robot's behavior by modifying the constants in `include/config.h`:
-
-- `SAFE_DISTANCE`: Minimum distance before obstacle avoidance (cm)
-- `NORMAL_SPEED`: Default movement speed
-- `TURN_SPEED`: Speed during turns
-- `BACKUP_TIME`: Duration of backup maneuver
-- `TURN_TIME`: Duration of turn maneuver
-- `SENSOR_DELAY`: Delay between sensor readings
-
-## License
-
-This project is open source and available under the MIT License.
+[SunFounder Smart Car Kit V2.0 - Assembly Guide](https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/car_project/car_assemble.html)
