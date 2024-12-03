@@ -18,6 +18,7 @@ public:
 
 private:
     void performAvoidanceManeuver(const SensorData &sensors);
+    void backup();
     IMotor &m_motor;
     const RobotConfig &m_config;
     RobotState m_currentState;
